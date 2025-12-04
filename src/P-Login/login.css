@@ -1,0 +1,75 @@
+/* PAGE FULLSCREEN */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* CONTAINER : CENTRAGE PARFAIT SUR TOUS LES ÉCRANS */
+.login-container {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #302D2D;
+  font-family: sans-serif;
+
+  position: relative;
+}
+
+/* TITRE HAUT DE PAGE */
+.page-title {
+  position: absolute;
+  top: 40px;
+  font-size: 32px;
+  font-weight: 700;
+  color: re;
+  text-align: center;
+  width: 100%;
+}
+
+/* BOÎTE DE LOGIN */
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.login-box input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.login-box button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: red;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.login-box button:hover {
+  background: #3c40a0;
+}
+
+h2 {
+  color: black;
+}
