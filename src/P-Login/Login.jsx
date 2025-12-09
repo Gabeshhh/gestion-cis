@@ -6,53 +6,35 @@ import "./Login.css";
 export default function Login() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    
+
+    const VALID_USERNAME = "Olivier Claude";
+    const VALID_PASSWORD = "GIL30";
+
     const navigate = useNavigate();
 
-    const handleSumbit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
-        try {
-            const authResponse = await fetch( "http://localhost:3001/api/login",
-                {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        "userNameOrEmailAddress": username,
-                        "password": password
-                    }),
-                }
-            );
+        console.log("Username tapé :", username);
+        console.log("Password tapé :", password);
 
-            const authData = await authResponse.json();
-            console.log("Réponse Auth :", authData);
-
-            // Token
-            const token = authData.result.accessToken;
-
-            localStorage.setItem("token", token);
-
+        if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+            localStorage.setItem("isLogged", "True");
             navigate("/dashboard");
-        } catch (error) {
-            console.error("Erreur login Smart.CS ", error);
-            alert("Erreur de connexion");
-        };
-
-        console.log("Entrez votre username : ", username, password);
-        alert("Connexion en cours !");
-        navigate("/dashboard")
+        } else {
+            alert("Identifiants incorrects");
+        }
     };
 
     return (
         <div className="login-container">
-             <div className="page-title">Gestion C.I.S GIL</div>
+            <div className="page-title">Gestion C.I.S GIL</div>
 
-             
-            <form onSubmit={handleSumbit} className="login-box">
+            <form onSubmit={handleSubmit} className="login-box">
                 <h2>Connexion</h2>
 
                 <input
-                    type="username"
+                    type="text"
                     placeholder="Username"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}

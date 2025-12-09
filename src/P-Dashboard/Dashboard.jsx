@@ -1,45 +1,72 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
-import './Dashboard.css'
+import './Dashboard.css';
 
 export default function Dashboard() {
-    const [pojCount, setPojCount] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchPOJ = async () => {
-            try {
-                const response = await fetch(
-                    "http://localhost:3001/api/poj",
-                    {
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Authorization": "Bearer TOKENTOKEN"
-                        }
-                    }
-                );
+        const loggedIn = localStorage.getItem("isLogged");
 
-                const data = await response.json();
-                console.log("POJ :", data)
-
-                const nombre = data.result.length;
-                setPojCount(nombre);
-            } catch (error) {
-                console.error("Erreur POJ : ", error);
-            }
-        };
-
-        fetchPOJ();
-    }, []);
+        if (loggedIn !== "True") {
+            navigate("/");
+        }
+    }, [navigate]);
 
     return (
         <div className="dashboard-container">
-            <h1 className="dasboard-title">Gestion C.I.S GIL</h1>
-            <div className="card-container">
-                <div className="card">
-                    <h2>Personnels présents de garde</h2>
-                    <p className="card-number">{pojCount}</p>
-                </div>
+            <h1 className="dashboard-title">Bienvenue sur le Dashboard du C.I.S GIL</h1>
+
+
+            <div className="left-panel">
+                <button className="menu-button" onClick={() => navigate("/navette")}>
+                    Navette
+                </button>
+
+                <button className="menu-button">
+                    Interventions
+                </button>
+
+                <button className="menu-button">
+                    Véhicules
+                </button>
+
+                <button className="menu-button">
+                    POJ
+                </button>
+                <button className="menu-button" onClick={() => navigate("/navette")}>
+                    Navette
+                </button>
+
+                <button className="menu-button">
+                    Interventions
+                </button>
+
+                <button className="menu-button">
+                    Véhicules
+                </button>
+
+                <button className="menu-button">
+                    POJ
+                </button>
+                <button className="menu-button" onClick={() => navigate("/navette")}>
+                    Navette
+                </button>
+
+                <button className="menu-button">
+                    Interventions
+                </button>
+
+                <button className="menu-button">
+                    Véhicules
+                </button>
+
+                <button className="menu-button">
+                    POJ
+                </button>
             </div>
+
         </div>
     );
 }

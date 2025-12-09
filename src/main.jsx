@@ -5,12 +5,14 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './index.css'
 import Dashboard from './P-Dashboard/Dashboard.jsx'
 import Login from './P-Login/Login.jsx'
+import Navette from './P-Navette/Navette.jsx'
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element = {<Login />} />
       <Route path='/dashboard' element = {<Dashboard />} />
+      <Route path='/navette' element = {<Navette />} />
     </Routes>
   </BrowserRouter>
 )
